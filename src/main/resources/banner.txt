@@ -3,7 +3,5 @@
 
 << *****  S M A R T   R E S T A U R A N T  *****>>
 
-Graduaiton Project
-Topjava course, http://javaops.ru/ 
-																	 
+
 																	 

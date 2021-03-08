@@ -43,7 +43,7 @@ public class LoggedUserController {
     @Autowired
     private PasswordEncoder encoder;
 
-    @Value("${voteforlunch.app.expiredTime}")
+    @Value("${smartrestaurant.app.expiredTime}")
     private Integer expiredTime;
 
     @PostMapping("/vote")

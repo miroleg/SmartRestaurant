@@ -37,10 +37,7 @@ public class SmartrestaurantApplication implements CommandLineRunner {
 
 
     public static void main(String[] args) {
- //       SpringApplication.run(SmartrestaurantApplication.class, args);
-        SpringApplication app = new SpringApplication(SmartrestaurantApplication.class);
-        app.run(args);
-
+        SpringApplication.run(SmartrestaurantApplication.class, args);
     }
 
     @Override

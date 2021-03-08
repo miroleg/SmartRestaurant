@@ -161,10 +161,3 @@ INSERT INTO vote (datev, user_id, restaurant_id) VALUES ('2018-12-29', 1, 2);
 INSERT INTO vote (datev, user_id, restaurant_id) VALUES ('2018-12-29', 2, 1);
 INSERT INTO vote (datev, user_id, restaurant_id) VALUES ('2018-12-29', 3, 2);
 
-
-
-
-
-
-
-
