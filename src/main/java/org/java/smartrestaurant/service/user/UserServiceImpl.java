@@ -18,10 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -63,29 +60,32 @@ public class UserServiceImpl implements UserService {
     public List<User> readAll() {
         return userRepository.findAll();
     }
-/*
+
     @Override
     @Cacheable("users")
     public List<User> readAllOrderByName() {
-        return userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
-    }
+        Comparator<User>  NameCommparator = Comparator.comparing(User::getName);
+        return userRepository.findAll().stream().sorted(NameCommparator).collect(Collectors.toList());
+   }
 
 
- */
+
     @Override
     public List<User> readByNameLike(String name) {
         return userRepository.findByNameIgnoreCaseContaining(name);
     }
 
 
-/*
+
     @Override
     @Cacheable("users")
     public List<User> readAllOrderByEmail() {
-        return userRepository.findAll(new Sort(Sort.Direction.ASC, "email"));
+        Comparator<User>  EmailCommparator = Comparator.comparing(User::getEmail);
+        return userRepository.findAll().stream().sorted(EmailCommparator).collect(Collectors.toList());
+ //       return userRepository.findAll(new Sort(Sort.Direction.ASC, "email"));  old edition
     }
 
-
+/*
     @Override
     public List<User> readPaginated(int page, int size) {
         Page<User> all = userRepository.findAll(new PageRequest(page, size));
@@ -93,7 +93,6 @@ public class UserServiceImpl implements UserService {
     }
 
  */
-
 
     @Override
     public User readByName(String name) throws NotFoundException {

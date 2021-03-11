@@ -59,13 +59,13 @@ public class UserAdminController {
         logger.info("Get users sorting by {}", order);
         List<User> userList;
         switch (order) {
-/*            case "name":
+           case "name":
                 userList = userService.readAllOrderByName();
                 break;
-            case "email":
+          case "email":
                 userList = userService.readAllOrderByEmail();
                 break;
- */
+
             default:
                 userList = userService.readAll();
                 break;

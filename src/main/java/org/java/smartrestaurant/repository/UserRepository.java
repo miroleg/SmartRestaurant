@@ -17,9 +17,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Modifying
     int removeById(int id);
 
-    //@Query("SELECT u FROM User u LEFT JOIN FETCH u.roles r WHERE u.id = :id")
-    //Optional<User> findById(@Param("id") int id);
-    Optional<User> findById(int id);
+    @Query("SELECT u FROM User u LEFT JOIN FETCH u.roles r WHERE u.id = :id")
+    Optional<User> findById(@Param("id") int id);
+//    Optional<User> findById(int id);
 
     @Query("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.roles r WHERE UPPER(u.name) LIKE CONCAT('%',UPPER(:name),'%')")
     List<User> findByNameIgnoreCaseContaining(@Param("name") String name);
@@ -27,8 +27,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.roles r WHERE UPPER(u.name) = UPPER(:name)")
     User findByName(@Param("name") String name);
 
-    ///@Query("SELECT u FROM User u LEFT JOIN FETCH u.roles r")
-    //List<User> findAll();
+    @Query("SELECT u FROM User u LEFT JOIN FETCH u.roles r")
+    List<User> findAll();
 
 
 }
