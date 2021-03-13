@@ -1,11 +1,12 @@
-package org.java.smartrestaurant.service.menu_item;
+package org.java.smartrestaurant.service.order_item;
 
-import org.java.smartrestaurant.dto.DishDtoForUser;
-import org.java.smartrestaurant.dto.MenuDtoForUser;
+
+import org.java.smartrestaurant.dto.OrderDtoFromrUser;
 import org.java.smartrestaurant.exception.NotFoundException;
-import org.java.smartrestaurant.model.MenuItem;
+import org.java.smartrestaurant.dto.DishDtoForUser;
+import org.java.smartrestaurant.model.OrderItem;
 import org.java.smartrestaurant.model.Restaurant;
-import org.java.smartrestaurant.repository.MenuItemRepository;
+import org.java.smartrestaurant.repository.OrderItemRepository;
 import org.java.smartrestaurant.util.entity.RestaurantUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -19,102 +20,103 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-@CacheConfig(cacheNames = "menuItems")
-public class MenuItemServiceImpl implements MenuItemService {
-    private final MenuItemRepository menuItemRepository;
+@CacheConfig(cacheNames = "orderItems")
+public class OrderItemServiceImpl implements OrderItemService {
+    private final OrderItemRepository orderItemRepository;
 
     @Autowired
-    public MenuItemServiceImpl(MenuItemRepository menuItemRepository) {
-        this.menuItemRepository = menuItemRepository;
+    public OrderItemServiceImpl(OrderItemRepository orderItemRepository) {
+        this.orderItemRepository = orderItemRepository;
     }
 
 
     @Override
-    @Cacheable("menuItems")
-    public List<MenuItem> readByDateAndRestaurant(int restaurantId, LocalDate dateParam) {
-        return menuItemRepository.findByDateAndRestaurant(restaurantId, dateParam);
+    @Cacheable("orderItems")
+    public List<OrderItem> readByDateAndRestaurant(int restaurantId, LocalDate dateParam) {
+        return orderItemRepository.findByDateAndRestaurant(restaurantId, dateParam);
 
     }
 
     @Override
-    @CacheEvict(value = "menuItems", allEntries = true)
+    @CacheEvict(value = "orderItems", allEntries = true)
     @Transactional
     public void deleteByDateAndRestaurant(int restaurantId, LocalDate dateParam) {
-        menuItemRepository.removeByDateAndRestaurant(restaurantId, dateParam);
+        orderItemRepository.removeByDateAndRestaurant(restaurantId, dateParam);
     }
 
     @Override
-    @Cacheable("menuItems")
-    public List<MenuItem> readByDate(LocalDate dateParam) {
-        return menuItemRepository.findByDate(dateParam);
+    @Cacheable("orderItems")
+    public List<OrderItem> readByDate(LocalDate dateParam) {
+        return orderItemRepository.findByDate(dateParam);
     }
 
     @Override
-    @CacheEvict(value = "menuItems", allEntries = true)
+    @CacheEvict(value = "orderItems", allEntries = true)
     @Transactional
-    public MenuItem create(MenuItem object) {
+    public OrderItem create(OrderItem object) {
         Objects.requireNonNull(object, "Parameter object cannot be null");
         if (!object.getDish().getRestaurant().getId().equals(object.getRestaurant().getId())) {
             throw new NotFoundException("Not found dish with id = " + object.getDish().getId() + " for restaurant with id = " + object.getRestaurant().getId());
         }
         object.setId(0);
-        return menuItemRepository.save(object);
+        return orderItemRepository.save(object);
     }
 
     @Override
-    @Cacheable("menuItems")
-    public MenuItem read(int id) throws NotFoundException {
-        return menuItemRepository.findById(id).orElseThrow(() -> new NotFoundException("MenuItem with id = " + id + " not found"));
+    @Cacheable("orderItems")
+    public OrderItem read(int id) throws NotFoundException {
+        return orderItemRepository.findById(id).orElseThrow(() -> new NotFoundException("MenuItem with id = " + id + " not found"));
     }
 
     @Override
-    @Cacheable("menuItems")
-    public List<MenuItem> readAll() {
-        return menuItemRepository.findAll();
+    @Cacheable("orderItems")
+    public List<OrderItem> readAll() {
+        return orderItemRepository.findAll();
     }
 
     @Override
-    @CacheEvict(value = "menuItems", allEntries = true)
+    @CacheEvict(value = "orderItems", allEntries = true)
     @Transactional
-    public MenuItem update(MenuItem object) throws NotFoundException {
+    public OrderItem update(OrderItem object) throws NotFoundException {
         Objects.requireNonNull(object, "Parameter object cannot be null");
-        if (!menuItemRepository.existsById(object.getId())) {
+        if (!orderItemRepository.existsById(object.getId())) {
             throw new NotFoundException("MenuItem with id = " + object.getId() + " not exists");
         }
         if (!object.getDish().getRestaurant().getId().equals(object.getRestaurant().getId())) {
             throw new NotFoundException("Not found dish with id = " + object.getDish().getId() + " for restaurant with id = " + object.getRestaurant().getId());
         }
-        return menuItemRepository.save(object);
+        return orderItemRepository.save(object);
     }
 
     @Override
-    @CacheEvict(value = "menuItems", allEntries = true)
+    @CacheEvict(value = "orderItems", allEntries = true)
     @Transactional
     public void delete(int id) throws NotFoundException {
-        if (menuItemRepository.removeById(id) == 0) {
+        if (orderItemRepository.removeById(id) == 0) {
             throw new NotFoundException("MenuItem with id = " + id + " not found");
         }
     }
 
     @Override
-    @CacheEvict(value = "menuItems", allEntries = true)
+    @CacheEvict(value = "orderItems", allEntries = true)
     @Transactional
     public void deleteAll() {
-        menuItemRepository.deleteAll();
+        orderItemRepository.deleteAll();
     }
 
-    public List<MenuDtoForUser> getMenuForDate(LocalDate date) {
-        List<MenuItem> menuItems = readByDate(date);
-        if (menuItems.isEmpty()) {
+ /*
+    public List<OrderDtoFromrUser> getOrderForDate(LocalDate date) {
+        List<OrderItem> orderItems = readByDate(date);
+        if (orderItems.isEmpty()) {
             throw new NotFoundException("No menu found for this date.");
         }
-        Map<Restaurant, List<MenuItem>> collect = menuItems.stream()
-                .collect(Collectors.groupingBy(MenuItem::getRestaurant));
-        List<MenuDtoForUser> list = new ArrayList<>();
+        Map<Restaurant, List<OrderItem>> collect = orderItems.stream()
+                .collect(Collectors.groupingBy(OrderItem::getRestaurant));
+        List<OrderDtoFromrUser> list = new ArrayList<>();
         collect.entrySet().forEach(el -> {
             List<DishDtoForUser> collect1 = el.getValue().stream().map(el1 -> new DishDtoForUser(el1.getDish().getId(), el1.getDish().getName(),
                     el1.getDish().getDescription(), el1.getPrice())).sorted(Comparator.comparing(DishDtoForUser::getId)).collect(Collectors.toList());
-            list.add(new MenuDtoForUser(date,
+            list.add(new OrderDtoFromrUser(1,date,
                     RestaurantUtil.createDtoFrom(el.getKey()), collect1));
         });
 
@@ -123,8 +125,10 @@ public class MenuItemServiceImpl implements MenuItemService {
     }
 
 
+  */
+
     @Override
     public void deleteAllByDate(LocalDate date) {
-        menuItemRepository.deleteAllByDatei(date);
+        orderItemRepository.deleteAllByDateo(date);
     }
 }

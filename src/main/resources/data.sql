@@ -117,7 +117,7 @@ INSERT INTO dish (name, description, restaurant_id) VALUES ('SAI KROK AMPAI', 'G
 INSERT INTO dish (name, description, restaurant_id) VALUES ('PLA MUUK', 'Griled Baby Octopus', 5);
 INSERT INTO dish (name, description, restaurant_id) VALUES ('PLAA', 'Yellow Tail Collar', 5);
 
-INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2018-12-28', 1, 1, 10.00);
+INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2020-12-28', 1, 1, 10.00);
 INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2018-12-28', 1, 2, 11.00);
 INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2018-12-28', 1, 3, 12.00);
 INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2018-12-29', 1, 4, 10.00);
@@ -150,6 +150,23 @@ INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2018-12-29',
 INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2018-12-30', 3, 20, 28.00);
 INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2018-12-30', 3, 21, 29.00);
 INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2018-12-30', 3, 22, 39.00);
+
+INSERT INTO orderfromauser (dateord, user_id, restaurant_id) VALUES ('2018-12-30', 2, 3);
+INSERT INTO orderfromauser (dateord, user_id, restaurant_id) VALUES ('2018-12-30', 2, 1);
+INSERT INTO orderfromauser (dateord, user_id, restaurant_id) VALUES ('2018-12-29', 2, 2);
+
+INSERT INTO order_item(dateo, orderfromauser_id, user_id, restaurant_id, dish_id, price) values('2018-12-30', 1, 2, 3, 20, 28.00);
+INSERT INTO order_item(dateo, orderfromauser_id, user_id, restaurant_id, dish_id, price) values('2018-12-30', 1, 2, 3, 21, 29.00);
+INSERT INTO order_item(dateo, orderfromauser_id, user_id, restaurant_id, dish_id, price) values('2018-12-30', 1, 2, 3, 22, 39.00);
+INSERT INTO order_item(dateo, orderfromauser_id, user_id, restaurant_id, dish_id, price) values('2018-12-30', 2, 2, 1,  2, 13.20);
+INSERT INTO order_item(dateo, orderfromauser_id, user_id, restaurant_id, dish_id, price) values('2018-12-30', 2, 2, 1,  3, 15.00);
+INSERT INTO order_item(dateo, orderfromauser_id, user_id, restaurant_id, dish_id, price) values('2018-12-30', 2, 2, 1,  4, 19.00);
+INSERT INTO order_item(dateo, orderfromauser_id, user_id, restaurant_id, dish_id, price) values('2018-12-30', 3, 2, 2, 12, 28.00);
+INSERT INTO order_item(dateo, orderfromauser_id, user_id, restaurant_id, dish_id, price) values('2018-12-30', 3, 2, 2, 13, 29.00);
+INSERT INTO order_item(dateo, orderfromauser_id, user_id, restaurant_id, dish_id, price) values('2018-12-30', 3, 2, 2,  6, 39.00);
+
+
+
 
 INSERT INTO vote (datev, user_id, restaurant_id) VALUES ('2018-12-28', 1, 1);
 INSERT INTO vote (datev, user_id, restaurant_id) VALUES ('2018-12-28', 2, 1);

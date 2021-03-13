@@ -50,6 +50,8 @@ CREATE TABLE restaurant (
 CREATE UNIQUE INDEX restaurant_unique_name_idx
   ON restaurant (name);
 
+
+
 CREATE TABLE dish (
                       id            INTEGER IDENTITY PRIMARY KEY,
                       name          VARCHAR(150) NOT NULL,
@@ -77,6 +79,45 @@ CREATE INDEX menu_item__dish_idx
   ON menu_item (dish_id);
 CREATE UNIQUE INDEX menu_item_date_dish_price_unique_idx
   ON menu_item (datei, dish_id, price);
+
+CREATE TABLE orderfromauser (
+                      id            INTEGER IDENTITY PRIMARY KEY,
+                      dateord         DATE,
+                      user_id       INTEGER NOT NULL,
+                      restaurant_id INTEGER NOT NULL,
+                      FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+                      FOREIGN KEY (restaurant_id) REFERENCES restaurant (id) ON DELETE CASCADE
+
+);
+CREATE INDEX order_date_idx
+  ON orderfromauser (dateord);
+CREATE INDEX order_user_idx
+  ON orderfromauser (user_id);
+CREATE INDEX order_restaurant_index_vote_idx
+  ON orderfromauser (restaurant_id);
+
+
+CREATE TABLE order_item (
+                           id            INTEGER IDENTITY PRIMARY KEY,
+                           dateo         DATE,
+                           orderfromauser_id      INTEGER NOT NULL,
+                           user_id       INTEGER NOT NULL,
+                           restaurant_id INTEGER NOT NULL,
+                           dish_id       INTEGER NOT NULL,
+                           price         DECIMAL(20, 2),
+                           FOREIGN KEY (dish_id) REFERENCES dish (id) ON DELETE CASCADE,
+                           FOREIGN KEY (restaurant_id) REFERENCES restaurant (id) ON DELETE CASCADE,
+                           FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+                           FOREIGN KEY (orderfromauser_id) REFERENCES orderfromauser (id) ON DELETE CASCADE
+);
+CREATE INDEX order_item_date_index_order_item_idx
+  ON order_item (dateo);
+CREATE INDEX order_item_restaurant_index_order_item_idx
+  ON order_item (restaurant_id);
+CREATE INDEX order_order__dish_idx
+  ON order_item (dish_id);
+CREATE UNIQUE INDEX order_item_date_dish_price_unique_idx
+  ON order_item (dateo, dish_id, price);
 
 CREATE TABLE vote (
                       id            INTEGER IDENTITY PRIMARY KEY,
