@@ -15,11 +15,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MenuDtoForUser {
+public class MenuForUserDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate date;
     private RestaurantDto restaurant;
-    private List<DishDtoForUser> dishes;
+    private List<DishForUserDto> dishes;
 }

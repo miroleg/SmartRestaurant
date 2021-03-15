@@ -1,13 +1,9 @@
 package org.java.smartrestaurant.service.order_item;
 
 
-import org.java.smartrestaurant.dto.OrderDtoFromrUser;
 import org.java.smartrestaurant.exception.NotFoundException;
-import org.java.smartrestaurant.dto.DishDtoForUser;
 import org.java.smartrestaurant.model.OrderItem;
-import org.java.smartrestaurant.model.Restaurant;
 import org.java.smartrestaurant.repository.OrderItemRepository;
-import org.java.smartrestaurant.util.entity.RestaurantUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -17,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @CacheConfig(cacheNames = "orderItems")
@@ -80,7 +75,7 @@ public class OrderItemServiceImpl implements OrderItemService {
     public OrderItem update(OrderItem object) throws NotFoundException {
         Objects.requireNonNull(object, "Parameter object cannot be null");
         if (!orderItemRepository.existsById(object.getId())) {
-            throw new NotFoundException("MenuItem with id = " + object.getId() + " not exists");
+            throw new NotFoundException("OrderItem with id = " + object.getId() + " not exists");
         }
         if (!object.getDish().getRestaurant().getId().equals(object.getRestaurant().getId())) {
             throw new NotFoundException("Not found dish with id = " + object.getDish().getId() + " for restaurant with id = " + object.getRestaurant().getId());

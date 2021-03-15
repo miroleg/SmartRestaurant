@@ -1,11 +1,9 @@
 package org.java.smartrestaurant.model;
 
 import lombok.*;
-import org.java.smartrestaurant.dto.DishDtoForUser;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "orderfromauser")
@@ -20,7 +18,7 @@ public class OrderFromAUser {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    private LocalDate datev;
+    private LocalDate dateord;
 
     @ManyToOne (optional=false, fetch = FetchType.LAZY)
     @JoinColumn (name="user_id", nullable = false)

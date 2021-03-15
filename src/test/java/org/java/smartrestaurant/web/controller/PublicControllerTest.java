@@ -1,6 +1,6 @@
 package org.java.smartrestaurant.web.controller;
 
-import org.java.smartrestaurant.dto.MenuDtoForUser;
+import org.java.smartrestaurant.dto.MenuForUserDto;
 import org.java.smartrestaurant.dto.ResultObject;
 import org.java.smartrestaurant.repository.VoteRepository;
 import org.java.smartrestaurant.service.menu_item.MenuItemService;
@@ -52,8 +52,8 @@ public class PublicControllerTest extends AbstractControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andReturn();
 
-        List<MenuDtoForUser> actual = util.readListFromJsonMvcResult(result, MenuDtoForUser.class);
-        List<MenuDtoForUser> expected  = menuItemService.getMenuForDate(DateTimeUtil.getParseDateString(DATE_PART));
+        List<MenuForUserDto> actual = util.readListFromJsonMvcResult(result, MenuForUserDto.class);
+        List<MenuForUserDto> expected  = menuItemService.getMenuForDate(DateTimeUtil.getParseDateString(DATE_PART));
         TestUtil.assertMatch(actual,  expected);
     }
 

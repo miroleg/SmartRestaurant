@@ -1,7 +1,6 @@
 package org.java.smartrestaurant.web.controller;
 
-import org.java.smartrestaurant.dto.MenuDtoForUser;
-import org.java.smartrestaurant.dto.OrderDtoFromrUser;
+import org.java.smartrestaurant.dto.MenuForUserDto;
 import org.java.smartrestaurant.dto.ResultObject;
 import org.java.smartrestaurant.exception.NotFoundException;
 import org.java.smartrestaurant.repository.VoteRepository;
@@ -34,7 +33,7 @@ public class PublicController {
 
     @GetMapping(value = "/menu")
     @ResponseStatus(value = HttpStatus.OK)
-    public List<MenuDtoForUser> getMenu(@RequestParam("date") LocalDate date) {
+    public List<MenuForUserDto> getMenu(@RequestParam("date") LocalDate date) {
         logger.info("Get the menu for the specified date");
         return menuItemService.getMenuForDate(date);
     }
@@ -53,6 +52,4 @@ public class PublicController {
                 .collect(Collectors.toList());
 
     }
-
-
 }

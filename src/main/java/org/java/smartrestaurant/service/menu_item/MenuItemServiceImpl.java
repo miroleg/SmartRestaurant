@@ -1,7 +1,7 @@
 package org.java.smartrestaurant.service.menu_item;
 
-import org.java.smartrestaurant.dto.DishDtoForUser;
-import org.java.smartrestaurant.dto.MenuDtoForUser;
+import org.java.smartrestaurant.dto.DishForUserDto;
+import org.java.smartrestaurant.dto.MenuForUserDto;
 import org.java.smartrestaurant.exception.NotFoundException;
 import org.java.smartrestaurant.model.MenuItem;
 import org.java.smartrestaurant.model.Restaurant;
@@ -103,18 +103,18 @@ public class MenuItemServiceImpl implements MenuItemService {
         menuItemRepository.deleteAll();
     }
 
-    public List<MenuDtoForUser> getMenuForDate(LocalDate date) {
+    public List<MenuForUserDto> getMenuForDate(LocalDate date) {
         List<MenuItem> menuItems = readByDate(date);
         if (menuItems.isEmpty()) {
             throw new NotFoundException("No menu found for this date.");
         }
         Map<Restaurant, List<MenuItem>> collect = menuItems.stream()
                 .collect(Collectors.groupingBy(MenuItem::getRestaurant));
-        List<MenuDtoForUser> list = new ArrayList<>();
+        List<MenuForUserDto> list = new ArrayList<>();
         collect.entrySet().forEach(el -> {
-            List<DishDtoForUser> collect1 = el.getValue().stream().map(el1 -> new DishDtoForUser(el1.getDish().getId(), el1.getDish().getName(),
-                    el1.getDish().getDescription(), el1.getPrice())).sorted(Comparator.comparing(DishDtoForUser::getId)).collect(Collectors.toList());
-            list.add(new MenuDtoForUser(date,
+            List<DishForUserDto> collect1 = el.getValue().stream().map(el1 -> new DishForUserDto(el1.getDish().getId(), el1.getDish().getName(),
+                    el1.getDish().getDescription(), el1.getPrice())).sorted(Comparator.comparing(DishForUserDto::getId)).collect(Collectors.toList());
+            list.add(new MenuForUserDto(date,
                     RestaurantUtil.createDtoFrom(el.getKey()), collect1));
         });
 

@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDtoFromrUser {
+public class OrderFromAUserDto {
     private Integer id;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
@@ -23,5 +23,5 @@ public class OrderDtoFromrUser {
     private LocalDate date;
     private int user_id;
     private RestaurantDto restaurant;
-    private List<DishDtoForUser> dishes;
+    private List<DishForUserDto> dishes;
 }

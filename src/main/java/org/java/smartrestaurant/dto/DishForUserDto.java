@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DishDtoForUser {
+public class DishForUserDto {
     private Integer id;
     private String name;
     private String description;
