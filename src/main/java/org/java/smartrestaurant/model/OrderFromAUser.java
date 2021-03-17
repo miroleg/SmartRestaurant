@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "orderfromauser")
@@ -28,7 +29,6 @@ public class OrderFromAUser {
     @JoinColumn (name="restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-
-
+    int totalCookingTime;
 
 }

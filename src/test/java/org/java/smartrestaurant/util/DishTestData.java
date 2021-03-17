@@ -41,7 +41,16 @@ public class DishTestData {
             "Grilled Issan Pork & Rice Sour Sausage. Mommy Pais recipe", "Griled Baby Octopus",
             "Yellow Tail Collar"
             };
+ /*   private static Integer[] duration =
+            {10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+             10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+             10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+             10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+             10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+    };
 
+
+  */
     public static Map<Integer, Dish> DISHES = new LinkedHashMap<Integer,Dish>();
 
     static {
@@ -63,21 +72,13 @@ public class DishTestData {
                 restaurant = RESTAURANT_5;
             }
 
-            DISHES.put(i, new Dish(i, names[i - 1], description[i - 1], restaurant));
+            DISHES.put(i, new Dish(i, names[i - 1], description[i - 1], restaurant, 10));
         }
 
     }
 
     public static int NEW_DISH_ID = DISHES.size() + 1;
-    public static Dish NEW_DISH = new Dish(NEW_DISH_ID, "New Dish", "New Dish Description", RESTAURANT_1);
-
-
-
-
-
-
-
-
+    public static Dish NEW_DISH = new Dish(NEW_DISH_ID, "New Dish", "New Dish Description", RESTAURANT_1,10);
 
 
 }

@@ -13,5 +13,6 @@ public class DishForUserDto {
     private Integer id;
     private String name;
     private String description;
+    private Integer duration;
     private BigDecimal price;
 }

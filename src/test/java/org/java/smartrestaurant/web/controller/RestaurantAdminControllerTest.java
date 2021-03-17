@@ -146,7 +146,7 @@ public class RestaurantAdminControllerTest extends AbstractControllerTest {
     @Test
     @WithMockUser(username = "alex", password = "qwerty2", roles = {"USER", "ADMIN"})
     public void createDish() throws Exception {
-        DishDto expected = new DishDto(0, "New Dish", "New Description");
+        DishDto expected = new DishDto(0, "New Dish", "New Description",10);
         ResultActions action = mockMvc.perform(post(REST_URL + "/" + RESTAURANT_2_ID + "/dishes")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(util.writeValue(expected)))

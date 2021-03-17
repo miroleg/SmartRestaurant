@@ -113,7 +113,7 @@ public class MenuItemServiceImpl implements MenuItemService {
         List<MenuForUserDto> list = new ArrayList<>();
         collect.entrySet().forEach(el -> {
             List<DishForUserDto> collect1 = el.getValue().stream().map(el1 -> new DishForUserDto(el1.getDish().getId(), el1.getDish().getName(),
-                    el1.getDish().getDescription(), el1.getPrice())).sorted(Comparator.comparing(DishForUserDto::getId)).collect(Collectors.toList());
+                    el1.getDish().getDescription(), el1.getDish().getDuration(), el1.getPrice())).sorted(Comparator.comparing(DishForUserDto::getId)).collect(Collectors.toList());
             list.add(new MenuForUserDto(date,
                     RestaurantUtil.createDtoFrom(el.getKey()), collect1));
         });

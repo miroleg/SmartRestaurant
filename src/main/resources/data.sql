@@ -56,66 +56,66 @@ VALUES ('Uncle Boons',
         '7 Spring St New York, NY', 'http://www.uncleboons.com/', 'info@uncleboons.com' , '(646) 370-6650');
 
 
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Buffalo Chicken Salad',
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Buffalo Chicken Salad',
                                                             'The Count: 1,130 calories, 74 grams fat, 3,290 milligrams sodium.' ||
-                                                            '"Salad" is stretching it! Fried meat, oily sauce, and cheese push the calories in this meal through the roof at one popular restaurant. It has about as many as a whole pint of chocolate chip cookie dough ice cream. The salad also packs nearly 25% more fat.', 1);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Fried Rice with Vegetables', 'The Count:  910 calories, 16 grams fat, 1,360 milligrams sodium' ||
-                                                                                          'Getting Chinese takeout? Dont assume the veggie options are the healthiest. Vegetarian fried rice can pack an unhealthy wallop. Instead, go for steamed dishes with lots of veggies and brown rice if it’s on the menu. Keep the rice to a half-cup -- that"s about half the size of a baseball. Always ask for sauce on the side.', 1);
+                                                            '"Salad" is stretching it! Fried meat, oily sauce, and cheese push the calories in this meal through the roof at one popular restaurant. It has about as many as a whole pint of chocolate chip cookie dough ice cream. The salad also packs nearly 25% more fat.', 1, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Fried Rice with Vegetables', 'The Count:  910 calories, 16 grams fat, 1,360 milligrams sodium' ||
+                                                                                          'Getting Chinese takeout? Dont assume the veggie options are the healthiest. Vegetarian fried rice can pack an unhealthy wallop. Instead, go for steamed dishes with lots of veggies and brown rice if it’s on the menu. Keep the rice to a half-cup -- that"s about half the size of a baseball. Always ask for sauce on the side.', 1, 10);
 
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Salmon on bed', 'Roasted beet and 5 0z. salmon on bed of kale and spinach greens with balsamic vinegar drizzle', 1);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Roast beef sandwich', '1 small whole-grain hoagie bun, 2 ounces lean roast beef, 1 slice part-skim mozzarella, cheese, 2 slices tomato, 1/4 cup mushrooms (cooked in 1 teaspoon corn/canola oil), 1 teaspoon mustard', 1);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Tuna salad sandwich', '2 slices rye bread, 2 ounces tuna, 1 tablespoon mayonnaise, 1 tablespoon chopped, celery, 1/2 cup shredded lettuce', 1);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Salmon on bed', 'Roasted beet and 5 0z. salmon on bed of kale and spinach greens with balsamic vinegar drizzle', 1, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Roast beef sandwich', '1 small whole-grain hoagie bun, 2 ounces lean roast beef, 1 slice part-skim mozzarella, cheese, 2 slices tomato, 1/4 cup mushrooms (cooked in 1 teaspoon corn/canola oil), 1 teaspoon mustard', 1, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Tuna salad sandwich', '2 slices rye bread, 2 ounces tuna, 1 tablespoon mayonnaise, 1 tablespoon chopped, celery, 1/2 cup shredded lettuce', 1, 10);
 
 
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Lamb Pao-Mo Soup', 'Our housemade unleavened bread boiled in lamb broth with sliced lamb meat and scallions, topped with cilantro.', 2);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Lamb Pao-Mo Soup', 'Our housemade unleavened bread boiled in lamb broth with sliced lamb meat and scallions, topped with cilantro.', 2, 10);
 
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Spicy Cumin Lamb Hand-Ripped Noodles', 'Our biangbiang wide, hand-ripped noodles mixed with sauteed spicy cumin lamb.', 2);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Spicy & Tingly Beef Hand-Ripped Noodles', 'Our biangbiang wide, hand-ripped noodles mixed with chunks of lean beef, with a spicy and tingly (because of Sichuan peppercorns) sauce.', 2);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Chang''An Spicy Tofu', 'Housemade soft tofu drizzled with soy sauce, vinegar, chili oil, and fresh cilantro.', 2);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Pork "Zha Jiang" Hand-Ripped Noodles', 'Our wide hand-ripped biangbiang noodles mixed with a savory, and slightly-sweet ground pork meat sauce, tossed with cucumbers, scallions, celery, and chives.', 2);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Stewed Pork Burger', 'Pork belly meat, stewed and diced with its own juices, then packed into a warm and crispy flatbread-like bun.', 2);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Stir-Fried Liang Pi "Cold-Skin Noodles"', 'Chewy wheat flour noodles, quickly stir-fried with bean sprouts, cucumbers, cilantro, and cubes of spongy gluten, in all our proprietary sauces, which includes soy sauce, black vinegar, chili oil (unless requested not spicy).', 2);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Stewed Oxtail Hand-Ripped Noodles in Soup', 'Our biangbiang wide, hand-ripped noodles, topped with sliced stewed oxtails which were stewed in soy sauce and spices, in a beef broth.', 2);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Spicy Cumin Lamb Hand-Ripped Noodles', 'Our biangbiang wide, hand-ripped noodles mixed with sauteed spicy cumin lamb.', 2, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Spicy & Tingly Beef Hand-Ripped Noodles', 'Our biangbiang wide, hand-ripped noodles mixed with chunks of lean beef, with a spicy and tingly (because of Sichuan peppercorns) sauce.', 2, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Chang''An Spicy Tofu', 'Housemade soft tofu drizzled with soy sauce, vinegar, chili oil, and fresh cilantro.', 2, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Pork "Zha Jiang" Hand-Ripped Noodles', 'Our wide hand-ripped biangbiang noodles mixed with a savory, and slightly-sweet ground pork meat sauce, tossed with cucumbers, scallions, celery, and chives.', 2, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Stewed Pork Burger', 'Pork belly meat, stewed and diced with its own juices, then packed into a warm and crispy flatbread-like bun.', 2, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Stir-Fried Liang Pi "Cold-Skin Noodles"', 'Chewy wheat flour noodles, quickly stir-fried with bean sprouts, cucumbers, cilantro, and cubes of spongy gluten, in all our proprietary sauces, which includes soy sauce, black vinegar, chili oil (unless requested not spicy).', 2, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Stewed Oxtail Hand-Ripped Noodles in Soup', 'Our biangbiang wide, hand-ripped noodles, topped with sliced stewed oxtails which were stewed in soy sauce and spices, in a beef broth.', 2, 10);
 
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Huîtres, Granité aux Algues', 'oysters, seaweed ice', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Velouté de Pommes de Terre', 'crème fraîche, caviar', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Quenelle de brochet “Route de Reims”', 'champagne beurre blanc, caviar', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Salade de homard, vinaigrette à la moutarde', 'grilled lobster refreshed with lime and mustard, exotic pears from here', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Boudin “Les Aldudes”', 'blood sausage, apple, piment d’Espelette', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Retour de Pêche', 'tilefish cooked on its scales, endive and mussels', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Bar noir de nos côtes « souvenir de Marseille »', 'local black bass and stuffed squid, traditional fish soup', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Canette Sainte-Baume', 'grilled duckling and figs', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Filet de boeuf ‘Bourse et la Vie’', 'prime filet, sauce au poivre, pommes frites', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Pêches à la crème', 'peaches, crème légère, pistachio', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Chocolat Noir', 'salted caramel ice cream', 3);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Paris-Brest', 'hazelnut praline, pâte choux', 3);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Huîtres, Granité aux Algues', 'oysters, seaweed ice', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Velouté de Pommes de Terre', 'crème fraîche, caviar', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Quenelle de brochet “Route de Reims”', 'champagne beurre blanc, caviar', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Salade de homard, vinaigrette à la moutarde', 'grilled lobster refreshed with lime and mustard, exotic pears from here', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Boudin “Les Aldudes”', 'blood sausage, apple, piment d’Espelette', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Retour de Pêche', 'tilefish cooked on its scales, endive and mussels', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Bar noir de nos côtes « souvenir de Marseille »', 'local black bass and stuffed squid, traditional fish soup', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Canette Sainte-Baume', 'grilled duckling and figs', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Filet de boeuf ‘Bourse et la Vie’', 'prime filet, sauce au poivre, pommes frites', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Pêches à la crème', 'peaches, crème légère, pistachio', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Chocolat Noir', 'salted caramel ice cream', 3, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Paris-Brest', 'hazelnut praline, pâte choux', 3, 10);
 
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Oysters (½ dozen)', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Selection of cheese', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Breakfast radishes, seaweed butter', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Scallop crudo, meyer lemon, chicory', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Beef tartare, cheddar, horseradish, brazil nuts', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Potato darphin, maine uni, jalapeno', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Black maitake, stracciatella, chicken skin, tomatillo', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Crispy grain salad, hearts of palm, tarragon', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Confit bacon toast, pickled pineapple, nduja butter', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Pork milanese, gribiche, mustard greens', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('American Wagyu steak (24oz)', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Fried squid, lemon, squid ink mayo', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Maine lobster with buckwheat crepes', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Chocolate hazelnut tart', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Panna cotta, satsuma mandarin granita', '', 4);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('Top neck clams, XO, almond milk', '', 4);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Oysters (½ dozen)', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Selection of cheese', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Breakfast radishes, seaweed butter', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Scallop crudo, meyer lemon, chicory', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Beef tartare, cheddar, horseradish, brazil nuts', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Potato darphin, maine uni, jalapeno', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Black maitake, stracciatella, chicken skin, tomatillo', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Crispy grain salad, hearts of palm, tarragon', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Confit bacon toast, pickled pineapple, nduja butter', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Pork milanese, gribiche, mustard greens', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('American Wagyu steak (24oz)', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Fried squid, lemon, squid ink mayo', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Maine lobster with buckwheat crepes', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Chocolate hazelnut tart', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Panna cotta, satsuma mandarin granita', '', 4, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('Top neck clams, XO, almond milk', '', 4, 10);
 
-INSERT INTO dish (name, description, restaurant_id) VALUES ('MENG KUM', 'Bettel Leaf Wrap with Ginger, Lime, Toasted Coconut, Dried Shrimp, Chilies & Peanuts - Traditional Thai snack', 5);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('HOI TAK', 'Green Curry Snails with Crispy Garlic & Herbs', 5);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('MUU TOD KAPI', 'Shrimp Paste Pork Riblets & Radishes with Fish sauce Caramel', 5);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('KHAO SOI KAA KAI', 'Northern Style Golden Curry with Home Made Egg Noodles, Chicken Leg, Pickled Mustard Greens and Fresh Turmeric', 5);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('KAO PAT PUU', 'Traditional Crab Fried Rice with Egg, Cilantro and Lime', 5);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('KAI YANG MUAY THAI', 'Rotisserie Half Chicken with Dipping Sauces & Mango Salad', 5);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('SAI KROK AMPAI', 'Grilled Issan Pork & Rice Sour Sausage. Mommy Pais recipe', 5);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('PLA MUUK', 'Griled Baby Octopus', 5);
-INSERT INTO dish (name, description, restaurant_id) VALUES ('PLAA', 'Yellow Tail Collar', 5);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('MENG KUM', 'Bettel Leaf Wrap with Ginger, Lime, Toasted Coconut, Dried Shrimp, Chilies & Peanuts - Traditional Thai snack', 5, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('HOI TAK', 'Green Curry Snails with Crispy Garlic & Herbs', 5, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('MUU TOD KAPI', 'Shrimp Paste Pork Riblets & Radishes with Fish sauce Caramel', 5, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('KHAO SOI KAA KAI', 'Northern Style Golden Curry with Home Made Egg Noodles, Chicken Leg, Pickled Mustard Greens and Fresh Turmeric', 5, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('KAO PAT PUU', 'Traditional Crab Fried Rice with Egg, Cilantro and Lime', 5, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('KAI YANG MUAY THAI', 'Rotisserie Half Chicken with Dipping Sauces & Mango Salad', 5, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('SAI KROK AMPAI', 'Grilled Issan Pork & Rice Sour Sausage. Mommy Pais recipe', 5, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('PLA MUUK', 'Griled Baby Octopus', 5, 10);
+INSERT INTO dish (name, description, restaurant_id, duration) VALUES ('PLAA', 'Yellow Tail Collar', 5, 10);
 
 INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2020-12-28', 1, 1, 10.00);
 INSERT INTO menu_item(datei, restaurant_id, dish_id, price) values('2018-12-28', 1, 2, 11.00);

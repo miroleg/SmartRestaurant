@@ -9,17 +9,17 @@ import java.util.stream.Collectors;
 public class DishUtil {
     public static DishDto createDtoFrom(Dish dish) {
         return new DishDto(dish.getId(), dish.getName(),
-                dish.getDescription());
+                dish.getDescription(), dish.getDuration());
     }
 
     public static List<DishDto> createDtoListFromDishList(List<Dish> dishList) {
         return dishList.stream().map(el -> new DishDto(el.getId(), el.getName(),
-                el.getDescription())).collect(Collectors.toList());
+                el.getDescription(), el.getDuration())).collect(Collectors.toList());
     }
 
     public static Dish createDishFromDto(DishDto dishDto) {
         return new Dish(dishDto.getId(), dishDto.getName(),
-                dishDto.getDescription(), null);
+                dishDto.getDescription(), null,0);
     }
 
     public static Dish updateDishFromDto(Dish dish, DishDto dishDto) {
@@ -31,7 +31,7 @@ public class DishUtil {
     public static Dish createNewFromAnother(Dish dish) {
         return new Dish(
                 dish.getId(), dish.getName(), dish.getDescription(),
-                dish.getRestaurant());
+                dish.getRestaurant(),dish.getDuration());
     }
 
 

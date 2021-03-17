@@ -57,6 +57,7 @@ CREATE TABLE dish (
                       name          VARCHAR(150) NOT NULL,
                       description   LONGVARCHAR,
                       restaurant_id INTEGER      NOT NULL,
+                      duration      INTEGER      NOT NULL,
                       FOREIGN KEY (restaurant_id) REFERENCES restaurant (id) ON DELETE CASCADE
 );
 CREATE UNIQUE INDEX dish_name_restaurant_unique_idx
