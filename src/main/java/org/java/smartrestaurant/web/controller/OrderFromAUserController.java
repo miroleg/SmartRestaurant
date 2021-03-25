@@ -1,6 +1,7 @@
 package org.java.smartrestaurant.web.controller;
 
 
+import org.java.smartrestaurant.dto.DishForUserDto;
 import org.java.smartrestaurant.dto.OrderFromAUserDto;
 import org.java.smartrestaurant.dto.UserDto;
 import org.java.smartrestaurant.service.order_item.OrderItemService;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.ArrayList;
 
 import static org.java.smartrestaurant.util.entity.UserUtil.createDtoFrom;
 import static org.java.smartrestaurant.util.entity.UserUtil.createUserFromDto;
@@ -34,12 +36,16 @@ public class OrderFromAUserController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public ResponseEntity<OrderFromAUserDto> create(@Valid @RequestBody OrderFromAUserDto orderFromAUserDto, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<ArrayList<DishForUserDto>> create(@Valid @RequestBody OrderFromAUserDto orderFromAUserDto, UriComponentsBuilder ucBuilder) {
+        logger.info("Register new OrderFromAUser with info {}", orderFromAUserDto);/*
+      OrderFromAUserDto created = createDtoFrom(orderItemService.create(createDtoListFromEntityList(List<E> objectEntityList)
+              createOrderFromDto(orderFromAUserDto)));
+
+
+/*
+public ResponseEntity<OrderFromAUserDto> create(@Valid @RequestBody OrderFromAUserDto orderFromAUserDto, UriComponentsBuilder ucBuilder) {
         logger.info("Register new OrderFromAUser with info {}", orderFromAUserDto);
-/*        OrderFromAUserDto created = createDtoFrom(orderItemService.create(createOrderFromDto(orderFromAUserDto)));
-
-
-
+      OrderFromAUserDto created = createDtoFrom(orderItemService.create(createOrderFromDto(orderFromAUserDto)));
 
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -50,4 +56,19 @@ public class OrderFromAUserController {
  */
         return null;
     }
+ /*
+ Затем поменяйте контроллер на этот
+@Path(value = "/job")
+@POST
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
+public Response insertJob(
+        Job test
+) {
+    return Response.ok(test).build();
+
+}
+  */
+
+
 }

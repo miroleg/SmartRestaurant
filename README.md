@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/69d104afa8bc431a8d661d1f1a670690)](https://www.codacy.com/app/miroleg/SmartRestaurant?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=miroleg/SmartRestaurant;utm_campaign=Badge_Grade)
+
 # SmartRestaurant
 Restaurant Orders Management
 

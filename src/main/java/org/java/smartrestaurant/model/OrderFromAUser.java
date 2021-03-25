@@ -1,5 +1,6 @@
 package org.java.smartrestaurant.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,5 +31,38 @@ public class OrderFromAUser {
     private Restaurant restaurant;
 
     int totalCookingTime;
+    /*
+
+    @JsonProperty("dishes")
+    private List<RequestDish> dishes;
+
+
+
+    public class RequestDish {
+
+        private String name;
+        private String content;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+
+    }
+
+
+ */
 
 }

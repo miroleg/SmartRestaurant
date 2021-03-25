@@ -1,9 +1,13 @@
 package org.java.smartrestaurant.web.controller;
 
+import org.java.smartrestaurant.dto.DishForUserDto;
+import org.java.smartrestaurant.dto.MenuForUserDto;
 import org.java.smartrestaurant.exception.AuthorizationFailedException;
 import org.java.smartrestaurant.exception.InvalidOldPasswordException;
+import org.java.smartrestaurant.model.OrderFromAUser;
 import org.java.smartrestaurant.model.User;
 import org.java.smartrestaurant.model.Vote;
+import org.java.smartrestaurant.service.order_item.OrderItemService;
 import org.java.smartrestaurant.service.restaurant.RestaurantService;
 import org.java.smartrestaurant.service.user.UserService;
 import org.java.smartrestaurant.service.vote.VoteService;
@@ -35,6 +39,9 @@ public class LoggedUserController {
     private VoteService voteService;
 
     @Autowired
+    private OrderItemService orderItemService;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
@@ -45,6 +52,39 @@ public class LoggedUserController {
 
     @Value("${smartrestaurant.app.expiredTime}")
     private Integer expiredTime;
+
+
+    @PostMapping("/order")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Integer doOrder(@RequestBody org.java.smartrestaurant.dto.MenuForUserDto inDto) {
+        logger.info("Do order");
+        LocalDateTime dateTime = LocalDateTime.now();
+         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication instanceof AnonymousAuthenticationToken) {
+            logger.info("Authorization required");
+            return -1;
+/*            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .header("Content-Type", "text/json; charset=utf-8")
+                    .body("{\"status\":\"UNAUTHORIZED\",\"message\":\"Authorization required\",\"errors\":[\"Authorization required\"]}\n");
+ */
+        }
+        logger.info("Do order - Current user name: " + authentication.getName());
+
+        User user = userService.readByName(authentication.getName());
+        OrderFromAUser orderFromAUser = new OrderFromAUser(0, dateTime.toLocalDate(), user, restaurantService.read(inDto.getRestaurant().getId()),0);
+        int totalCookingTime = 0;
+        for (DishForUserDto dish : inDto.getDishes()) {
+            totalCookingTime = totalCookingTime + dish.getDuration();
+
+        }
+
+        logger.info("Do order - Current totalCookingTime: " + totalCookingTime);
+
+        return totalCookingTime;
+    }
+
+
 
     @PostMapping("/vote")
     @ResponseStatus(HttpStatus.OK)
@@ -72,6 +112,9 @@ public class LoggedUserController {
                 .header("Content-Type", "text/json; charset=utf-8")
                 .body("{\"status\":\"Vote saved\"}");
     }
+
+
+
 
     @PostMapping(value = "/update_password")
     @ResponseStatus(value = HttpStatus.OK)
