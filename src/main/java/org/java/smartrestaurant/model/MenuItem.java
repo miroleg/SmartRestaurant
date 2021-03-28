@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "menu_item")
-//@ToString(exclude = {"dish", "restaurant"})
 @ToString
 public class MenuItem implements Serializable {
     @Id
@@ -36,6 +35,4 @@ public class MenuItem implements Serializable {
 
     @NotNull
     private BigDecimal price;
-
-
 }

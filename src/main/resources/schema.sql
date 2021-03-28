@@ -5,6 +5,8 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS dish;
 DROP TABLE IF EXISTS menu_item;
 DROP TABLE IF EXISTS restaurant;
+DROP TABLE IF EXISTS order_u;
+DROP TABLE IF EXISTS order_item;
 
 CREATE TABLE users (
                        id         INTEGER IDENTITY PRIMARY KEY,
@@ -81,41 +83,39 @@ CREATE INDEX menu_item__dish_idx
 CREATE UNIQUE INDEX menu_item_date_dish_price_unique_idx
   ON menu_item (datei, dish_id, price);
 
-CREATE TABLE orderfromauser (
-                      id            INTEGER IDENTITY PRIMARY KEY,
-                      dateord         DATE,
-                      user_id       INTEGER NOT NULL,
-                      restaurant_id INTEGER NOT NULL,
+CREATE TABLE order_u (
+                      id                INTEGER IDENTITY PRIMARY KEY,
+                      dateord           DATE,
+                      user_id           INTEGER NOT NULL,
+                      restaurant_id     INTEGER NOT NULL,
+                      totalcookingtime  INTEGER NOT NULL,
                       FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
-                      FOREIGN KEY (restaurant_id) REFERENCES restaurant (id) ON DELETE CASCADE
-
-);
-CREATE INDEX order_date_idx
-  ON orderfromauser (dateord);
-CREATE INDEX order_user_idx
-  ON orderfromauser (user_id);
-CREATE INDEX order_restaurant_index_vote_idx
-  ON orderfromauser (restaurant_id);
+                      FOREIGN KEY (restaurant_id) REFERENCES restaurant (id) ON DELETE CASCADE);
+CREATE INDEX order_u_date_index_order_u_idx
+  ON order_u (dateord);
+CREATE INDEX order_u_user_idx
+  ON order_u (user_id);
+CREATE INDEX order_u_restaurant_index_order_u_idx
+  ON order_u (restaurant_id);
+CREATE INDEX order_u_totalcookingtime_idx
+  ON order_u (totalcookingtime);
 
 
 CREATE TABLE order_item (
                            id            INTEGER IDENTITY PRIMARY KEY,
                            dateo         DATE,
-                           orderfromauser_id      INTEGER NOT NULL,
-                           user_id       INTEGER NOT NULL,
+                           order_u_id    INTEGER NOT NULL,
                            restaurant_id INTEGER NOT NULL,
                            dish_id       INTEGER NOT NULL,
                            price         DECIMAL(20, 2),
                            FOREIGN KEY (dish_id) REFERENCES dish (id) ON DELETE CASCADE,
                            FOREIGN KEY (restaurant_id) REFERENCES restaurant (id) ON DELETE CASCADE,
-                           FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
-                           FOREIGN KEY (orderfromauser_id) REFERENCES orderfromauser (id) ON DELETE CASCADE
-);
+                           FOREIGN KEY (order_u_id) REFERENCES order_u (id) ON DELETE CASCADE);
 CREATE INDEX order_item_date_index_order_item_idx
   ON order_item (dateo);
 CREATE INDEX order_item_restaurant_index_order_item_idx
   ON order_item (restaurant_id);
-CREATE INDEX order_order__dish_idx
+CREATE INDEX order_item_dish_idx
   ON order_item (dish_id);
 CREATE UNIQUE INDEX order_item_date_dish_price_unique_idx
   ON order_item (dateo, dish_id, price);

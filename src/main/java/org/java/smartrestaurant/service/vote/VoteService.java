@@ -21,7 +21,4 @@ public interface VoteService extends BaseService<Vote> {
     void removeByDateAndUserId(LocalDate date, int userId);
     Vote findVotesByDateAndUserIdAndRestaurantId(
             LocalDate date, int userId, int restaurantId);
-
-
-
 }

@@ -31,9 +31,6 @@ public class Dish {
     @JoinColumn (name="restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-
     @Column(name = "duration", nullable = false)
     private Integer duration;
-
-
 }

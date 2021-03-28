@@ -28,6 +28,11 @@ public class OrderItem implements Serializable {
     private LocalDate dateo;
 
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
+    @JoinColumn (name="order_u_id", nullable = false)
+    private OrderU orderU;
+
+
+    @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @JoinColumn (name="restaurant_id", nullable = false)
     private Restaurant restaurant;
 

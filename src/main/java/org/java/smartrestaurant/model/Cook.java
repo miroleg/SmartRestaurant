@@ -5,13 +5,13 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Cook extends Observable implements Runnable {
     private final String name;
-    private LinkedBlockingQueue<OrderFromAUser> queue;
+    private LinkedBlockingQueue<OrderU> queue;
 
-    public LinkedBlockingQueue<OrderFromAUser> getQueue() {
+    public LinkedBlockingQueue<OrderU> getQueue() {
         return queue;
     }
 
-    public void setQueue(LinkedBlockingQueue<OrderFromAUser> queue) {
+    public void setQueue(LinkedBlockingQueue<OrderU> queue) {
         this.queue = queue;
     }
 
@@ -25,7 +25,7 @@ public class Cook extends Observable implements Runnable {
         return busy;
     }
 
-    public void startCookingOrder(OrderFromAUser order) {
+    public void startCookingOrder(OrderU order) {
         this.busy = true;
 
         User user = order.getUser();
@@ -62,7 +62,9 @@ public class Cook extends Observable implements Runnable {
                 }
             }
         } catch (InterruptedException e) {
+
         }
+
     }
 
 }

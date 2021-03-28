@@ -1,16 +1,15 @@
 package org.java.smartrestaurant.web.controller;
 
 import org.java.smartrestaurant.dto.DishForUserDto;
-import org.java.smartrestaurant.dto.MenuForUserDto;
+import org.java.smartrestaurant.dto.OrderItemAdminDto;
 import org.java.smartrestaurant.exception.AuthorizationFailedException;
 import org.java.smartrestaurant.exception.InvalidOldPasswordException;
-import org.java.smartrestaurant.model.OrderFromAUser;
-import org.java.smartrestaurant.model.User;
-import org.java.smartrestaurant.model.Vote;
+import org.java.smartrestaurant.model.*;
 import org.java.smartrestaurant.service.order_item.OrderItemService;
 import org.java.smartrestaurant.service.restaurant.RestaurantService;
 import org.java.smartrestaurant.service.user.UserService;
 import org.java.smartrestaurant.service.vote.VoteService;
+import org.java.smartrestaurant.util.entity.OrderItemAdminUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +36,9 @@ public class LoggedUserController {
 
     @Autowired
     private VoteService voteService;
+
+    @Autowired
+    private OrderItemAdminUtil orderItemAdminUtil;
 
     @Autowired
     private OrderItemService orderItemService;
@@ -72,12 +74,31 @@ public class LoggedUserController {
         logger.info("Do order - Current user name: " + authentication.getName());
 
         User user = userService.readByName(authentication.getName());
-        OrderFromAUser orderFromAUser = new OrderFromAUser(0, dateTime.toLocalDate(), user, restaurantService.read(inDto.getRestaurant().getId()),0);
+
+        OrderU orderU = new OrderU(4, dateTime.toLocalDate(), user, restaurantService.read(inDto.getRestaurant().getId()),0);
+        logger.info("Create new order :" + orderU.getRestaurant().getId());
         int totalCookingTime = 0;
         for (DishForUserDto dish : inDto.getDishes()) {
             totalCookingTime = totalCookingTime + dish.getDuration();
+            logger.info("Create new order item ");
+ /*         LocalDate dateFromPath = date;
+            LocalDate dateFromDto = dto.getDate();
+            if (!dateFromDto.equals(dateFromPath)) {
+                throw new NotFoundException("Dates must be the same.");
+            }
 
+  */
+ //           OrderItemAdminDto orderItemAdminDto = new OrderItemAdminDto(0, dateTime.toLocalDate(), orderU.getId(), orderU.getRestaurant().getId(), dish.getId(), dish.getPrice());
+            OrderItemAdminDto orderItemAdminDto = new OrderItemAdminDto(0, dateTime.toLocalDate(),orderU.getId(), orderU.getRestaurant().getId(), dish.getId(), dish.getPrice());
+
+            logger.info("new order item  " + orderItemAdminDto.toString());
+
+            OrderItem entityFromDto = orderItemAdminUtil.createEntityFromDto(orderItemAdminDto);
+            logger.info("Create new order item  3");
+            orderItemService.create(entityFromDto);
+            logger.info("Create new order item  4");
         }
+        orderU.setTotalCookingTime(totalCookingTime);
 
         logger.info("Do order - Current totalCookingTime: " + totalCookingTime);
 

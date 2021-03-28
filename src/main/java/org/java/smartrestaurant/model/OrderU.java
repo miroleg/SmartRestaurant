@@ -8,18 +8,19 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "orderfromauser")
+@Table(name = "order_u")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class OrderFromAUser {
+public class OrderU {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
+
+    @Column(name = "dateord", nullable = false)
     private LocalDate dateord;
 
     @ManyToOne (optional=false, fetch = FetchType.LAZY)
@@ -30,39 +31,6 @@ public class OrderFromAUser {
     @JoinColumn (name="restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-    int totalCookingTime;
-    /*
-
-    @JsonProperty("dishes")
-    private List<RequestDish> dishes;
-
-
-
-    public class RequestDish {
-
-        private String name;
-        private String content;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
-
-
-    }
-
-
- */
-
+    @Column(name = "totalcookingtime", nullable = false)
+    private Integer totalCookingTime;
 }

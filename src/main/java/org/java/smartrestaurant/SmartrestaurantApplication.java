@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.java.smartrestaurant.model.OrderFromAUser;
+import org.java.smartrestaurant.model.OrderU;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class SmartrestaurantApplication implements CommandLineRunner {
     private CacheManager cacheManager;
 
     private static final int ORDER_CREATING_INTERVAL = 100;
-    private static final LinkedBlockingQueue<OrderFromAUser> ORDER_QUEUE = new LinkedBlockingQueue<>(200);
+    private static final LinkedBlockingQueue<OrderU> ORDER_QUEUE = new LinkedBlockingQueue<>(200);
 
 
     public static void main(String[] args) {
