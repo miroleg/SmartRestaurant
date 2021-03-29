@@ -25,6 +25,6 @@ public class OrderUDto {
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate date;
     private int user_id;
-    private RestaurantDto restaurant;
-    private List<DishForUserDto> dishes;
+    private int restaurant_id;
+    private int totalCookingTime;
 }

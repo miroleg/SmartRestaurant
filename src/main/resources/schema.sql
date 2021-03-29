@@ -117,8 +117,10 @@ CREATE INDEX order_item_restaurant_index_order_item_idx
   ON order_item (restaurant_id);
 CREATE INDEX order_item_dish_idx
   ON order_item (dish_id);
+/*
 CREATE UNIQUE INDEX order_item_date_dish_price_unique_idx
   ON order_item (dateo, dish_id, price);
+*/
 
 CREATE TABLE vote (
                       id            INTEGER IDENTITY PRIMARY KEY,

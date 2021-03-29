@@ -16,11 +16,11 @@ import java.util.Objects;
 
 @Service
     @CacheConfig(cacheNames = "orderUs")
-    public class OrderFromAUserServiceImpl implements OrderFromAUserService {
+    public class OrderUServiceImpl implements OrderUService {
         private final OrderURepository orderURepository;
 
         @Autowired
-        public OrderFromAUserServiceImpl(OrderURepository orderURepository) {
+        public OrderUServiceImpl(OrderURepository orderURepository) {
             this.orderURepository = orderURepository;
         }
 
